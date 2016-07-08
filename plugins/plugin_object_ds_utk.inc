@@ -36,9 +36,8 @@ function islandora_bagit_plugin_object_ds_utk_init($islandora_object, $tmp_ds_di
     $source_file_to_add = $ds_filename;
     $keepers = array('OBJ', 'RELS-EXT', 'RELS-INT', 'MODS', 'TECHMD', 'HOCR', 'OCR', 'POLICY', 'FULL_TEXT', 'COLLECTION_POLICY', 'Project.zip', 'TEI', 'EAD');
     $info = pathinfo($source_file_to_add);
-    $delimited_files = basename($source_file_to_add, '.'.$info['extension']);
 
-    if (file_exists($source_file_to_add) && is_file($source_file_to_add) && in_array($delimited_files, $keepers)) {
+    if (file_exists($source_file_to_add) && is_file($source_file_to_add) && in_array(basename($source_file_to_add, '.'.$info['extension']), $keepers)) {
       $files_to_add[] = array(
         'source' => $source_file_to_add,
         // We use basename here since there are no subdirectories in the Bag's
